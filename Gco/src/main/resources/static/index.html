@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro | Programa de Fidelidad</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Únete a nuestro Programa de Fidelidad</h1>
+            <p>Regístrate y recibe beneficios exclusivos en tus marcas favoritas.</p>
+        </header>
+
+        <form id="registroForm">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="tipoIdentificacion">Tipo de Identificación</label>
+                    <select id="tipoIdentificacion" required>
+                        <option value="">Seleccione...</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="numeroIdentificacion">Número de Identificación</label>
+                    <input type="text" id="numeroIdentificacion" required>
+                </div>
+                <div class="form-group">
+                    <label for="nombres">Nombres</label>
+                    <input type="text" id="nombres" required>
+                </div>
+                <div class="form-group">
+                    <label for="apellidos">Apellidos</label>
+                    <input type="text" id="apellidos" required>
+                </div>
+                <div class="form-group">
+                    <label for="fechaNacimiento">Fecha de Nacimiento</label>
+                    <input type="date" id="fechaNacimiento" required>
+                </div>
+                <div class="form-group">
+                    <label for="direccion">Dirección</label>
+                    <input type="text" id="direccion" required>
+                </div>
+                <div class="form-group">
+                    <label for="pais">País</label>
+                    <select id="pais" required>
+                        <option value="">Seleccione...</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="departamento">Departamento</label>
+                    <select id="departamento" required disabled>
+                        <option value="">Seleccione primero el país...</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="ciudad">Ciudad</label>
+                    <select id="ciudad" required disabled>
+                        <option value="">Seleccione primero el depto...</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="marca">Marca Favorita</label>
+                    <select id="marca" required>
+                        <option value="">Seleccione...</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="submit-section">
+                <button type="submit" id="btnSubmit">Completar Registro</button>
+                <div id="mensaje" class="mensaje"></div>
+            </div>
+        </form>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
+
