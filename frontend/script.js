@@ -259,6 +259,8 @@ async function manejarEnvioFormulario(event) {
       const nombreMarca = data.marca ? data.marca.nombre : '';
       mostrarAlerta(`¡Registro exitoso! Bienvenido ${data.nombres}. Marca seleccionada: ${nombreMarca}.`, 'success');
       form.reset();
+      selectTipoIdentificacion.value = '';
+      selectPais.value = '';
       selectDepartamento.disabled = true;
       selectDepartamento.innerHTML = '<option value="" disabled selected>Elige un país primero</option>';
       selectCiudad.disabled = true;

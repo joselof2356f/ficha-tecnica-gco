@@ -133,11 +133,10 @@ a { color: inherit; }
   z-index: 1;
 }
 
-.membercard__label {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #9C9CA5;
+.membercard__logo {
+  height: 24px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
 }
 
 .membercard__chip {
