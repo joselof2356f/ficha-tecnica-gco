@@ -7,9 +7,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
 import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Data
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Departamento {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -17,6 +19,7 @@ public class Departamento {
     
     @ManyToOne
     @JoinColumn(name = "pais_id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Pais pais;
 }
 

@@ -10,7 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 @CrossOrigin(origins = "*") // Permite peticiones desde el frontend HTML
-public class FidelidadController {
+public class LoyaltyController {
 
     @Autowired private TipoIdentificacionRepository tipoIdRepo;
     @Autowired private PaisRepository paisRepo;

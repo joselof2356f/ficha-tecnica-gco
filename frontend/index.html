@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Club de Fidelidad · Registro de Miembro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- ===================== PANEL IZQUIERDO: HERO / TARJETA DE MIEMBRO ===================== -->
+  <aside class="hero">
+    <div class="hero__top">
+      <span class="hero__mark">CLUB</span>
+      <span class="hero__mark hero__mark--accent">FIDELIDAD</span>
+    </div>
+
+    <h1 class="hero__headline">Una membresía.<br>Seis marcas.<br>Beneficios reales.</h1>
+
+    <p class="hero__sub">Regístrate una sola vez y acumula beneficios en cada una de nuestras tiendas.</p>
+
+    <!-- Tarjeta de membresía simulada -->
+    <div class="membercard" id="membercard">
+      <div class="membercard__row">
+        <span class="membercard__label">Miembro</span>
+        <span class="membercard__chip">NUEVO</span>
+      </div>
+      <div class="membercard__name" id="cardNombre">Tu nombre aquí</div>
+      <div class="membercard__row membercard__row--bottom">
+        <span class="membercard__num" id="cardId">N.° ---- ---- ----</span>
+        <span class="membercard__brand" id="cardMarca">Selecciona una marca</span>
+      </div>
+    </div>
+
+    <ul class="hero__brands" id="brandsPreview">
+      <!-- las marcas se listan aquí vía JS como referencia visual -->
+    </ul>
+
+    <p class="hero__footnote">Tus datos se usan únicamente para gestionar tu membresía y comunicarte beneficios exclusivos.</p>
+  </aside>
+
+  <!-- ===================== PANEL DERECHO: FORMULARIO ===================== -->
+  <main class="panel">
+    <div class="panel__inner">
+
+      <div id="alertBox" class="alert" hidden></div>
+
+      <form id="formRegistro" novalidate>
+
+        <section class="fieldset">
+          <h2 class="fieldset__title">Identificación</h2>
+          <div class="grid grid--2">
+            <div class="field">
+              <label for="tipoIdentificacion">Tipo de identificación</label>
+              <select id="tipoIdentificacion" name="tipoIdentificacion" required>
+                <option value="" disabled selected>Selecciona...</option>
+              </select>
+              <span class="field__error" data-error-for="tipoIdentificacion"></span>
+            </div>
+            <div class="field">
+              <label for="numeroIdentificacion">Número de identificación</label>
+              <input type="text" id="numeroIdentificacion" name="numeroIdentificacion" placeholder="Ej: 1020304050" required>
+              <span class="field__error" data-error-for="numeroIdentificacion"></span>
+            </div>
+          </div>
+        </section>
+
+        <section class="fieldset">
+          <h2 class="fieldset__title">Datos personales</h2>
+          <div class="grid grid--2">
+            <div class="field">
+              <label for="nombres">Nombres</label>
+              <input type="text" id="nombres" name="nombres" placeholder="Ej: Laura Andrea" required>
+              <span class="field__error" data-error-for="nombres"></span>
+            </div>
+            <div class="field">
+              <label for="apellidos">Apellidos</label>
+              <input type="text" id="apellidos" name="apellidos" placeholder="Ej: Gómez Ruiz" required>
+              <span class="field__error" data-error-for="apellidos"></span>
+            </div>
+          </div>
+          <div class="grid grid--2">
+            <div class="field">
+              <label for="fechaNacimiento">Fecha de nacimiento</label>
+              <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
+              <span class="field__error" data-error-for="fechaNacimiento"></span>
+            </div>
+            <div class="field">
+              <label for="direccion">Dirección</label>
+              <input type="text" id="direccion" name="direccion" placeholder="Ej: Cra 45 # 12-30" required>
+              <span class="field__error" data-error-for="direccion"></span>
+            </div>
+          </div>
+        </section>
+
+        <section class="fieldset">
+          <h2 class="fieldset__title">Ubicación</h2>
+          <div class="grid grid--3">
+            <div class="field">
+              <label for="pais">País</label>
+              <select id="pais" name="pais" required>
+                <option value="" disabled selected>Selecciona...</option>
+              </select>
+              <span class="field__error" data-error-for="pais"></span>
+            </div>
+            <div class="field">
+              <label for="departamento">Departamento</label>
+              <select id="departamento" name="departamento" required disabled>
+                <option value="" disabled selected>Elige un país primero</option>
+              </select>
+              <span class="field__error" data-error-for="departamento"></span>
+            </div>
+            <div class="field">
+              <label for="ciudad">Ciudad</label>
+              <select id="ciudad" name="ciudad" required disabled>
+                <option value="" disabled selected>Elige un departamento primero</option>
+              </select>
+              <span class="field__error" data-error-for="ciudad"></span>
+            </div>
+          </div>
+        </section>
+
+        <section class="fieldset">
+          <h2 class="fieldset__title">Marca de preferencia</h2>
+          <p class="fieldset__hint">Elige la marca donde quieres redimir tus beneficios.</p>
+          <div class="brandgrid" id="brandGrid">
+            <!-- tarjetas de marca generadas por JS -->
+          </div>
+          <span class="field__error" data-error-for="marca"></span>
+        </section>
+
+        <button type="submit" class="btn-submit" id="btnSubmit">
+          <span id="btnSubmitLabel">Registrarme en el club</span>
+        </button>
+
+      </form>
+    </div>
+  </main>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

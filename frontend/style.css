@@ -1,0 +1,406 @@
+/* =========================================================
+   TOKENS
+   ========================================================= */
+:root {
+  --ink: #15171B;
+  --ink-soft: #3A3D44;
+  --paper: #F5F2EA;
+  --paper-2: #ECE7D9;
+  --line: #DAD4C2;
+  --accent: #FF4E3A;
+  --accent-ink: #ffffff;
+  --success: #2F6F4E;
+  --success-bg: #E7F2EB;
+  --danger: #C23B2E;
+  --danger-bg: #FBEAE8;
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  --radius: 4px;
+  --radius-lg: 10px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+body { min-height: 100vh; }
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   LAYOUT
+   ========================================================= */
+.layout {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  min-height: 100vh;
+}
+
+@media (max-width: 960px) {
+  .layout { grid-template-columns: 1fr; }
+}
+
+/* =========================================================
+   HERO / PANEL IZQUIERDO
+   ========================================================= */
+.hero {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 48px 40px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 960px) {
+  .hero { position: static; height: auto; padding: 36px 24px; }
+}
+
+.hero__top {
+  display: flex;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  margin-bottom: 40px;
+}
+
+.hero__mark--accent { color: var(--accent); }
+
+.hero__headline {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(30px, 4vw, 42px);
+  line-height: 1.12;
+  margin: 0 0 18px 0;
+  letter-spacing: -0.01em;
+}
+
+.hero__sub {
+  color: #C8C8CE;
+  font-size: 15px;
+  line-height: 1.6;
+  max-width: 34ch;
+  margin: 0 0 36px 0;
+}
+
+/* --- Tarjeta de membresía --- */
+.membercard {
+  background: linear-gradient(135deg, #22252C 0%, #17181C 100%);
+  border: 1px solid #33363E;
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  margin-bottom: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.membercard::after {
+  content: "";
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 160px;
+  height: 160px;
+  background: var(--accent);
+  opacity: 0.18;
+  border-radius: 50%;
+}
+
+.membercard__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.membercard__label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #9C9CA5;
+}
+
+.membercard__chip {
+  background: var(--accent);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 100px;
+  letter-spacing: 0.04em;
+}
+
+.membercard__name {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  margin: 26px 0 22px 0;
+  min-height: 28px;
+  position: relative;
+  z-index: 1;
+  word-break: break-word;
+}
+
+.membercard__row--bottom { align-items: flex-end; }
+
+.membercard__num {
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: #C8C8CE;
+  font-variant-numeric: tabular-nums;
+}
+
+.membercard__brand {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* --- Lista de marcas de referencia --- */
+.hero__brands {
+  list-style: none;
+  margin: 0 0 auto 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.hero__brands li {
+  border: 1px solid #34373F;
+  color: #C8C8CE;
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 100px;
+}
+
+.hero__footnote {
+  font-size: 12px;
+  color: #7C7C85;
+  line-height: 1.5;
+  margin: 32px 0 0 0;
+  max-width: 38ch;
+}
+
+/* =========================================================
+   PANEL DERECHO / FORMULARIO
+   ========================================================= */
+.panel {
+  padding: 56px 48px 80px;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 960px) {
+  .panel { padding: 32px 20px 60px; }
+}
+
+.panel__inner {
+  width: 100%;
+  max-width: 640px;
+}
+
+.fieldset {
+  border: none;
+  padding: 0 0 32px 0;
+  margin: 0 0 32px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.fieldset:last-of-type {
+  border-bottom: none;
+}
+
+.fieldset__title {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+  margin: 0 0 18px 0;
+}
+
+.fieldset__hint {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin: -10px 0 16px 0;
+}
+
+.grid {
+  display: grid;
+  gap: 18px;
+  margin-bottom: 4px;
+}
+
+.grid--2 { grid-template-columns: 1fr 1fr; }
+.grid--3 { grid-template-columns: 1fr 1fr 1fr; }
+
+@media (max-width: 640px) {
+  .grid--2, .grid--3 { grid-template-columns: 1fr; }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 14px;
+}
+
+.field label {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--ink);
+}
+
+.field input,
+.field select {
+  font-family: var(--font-body);
+  font-size: 14px;
+  padding: 11px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  color: var(--ink);
+  transition: border-color 0.15s ease;
+}
+
+.field input:hover,
+.field select:hover { border-color: #B9B2A0; }
+
+.field input:focus,
+.field select:focus {
+  border-color: var(--accent);
+}
+
+.field select:disabled,
+.field input:disabled {
+  background: var(--paper-2);
+  color: #9A9A9A;
+  cursor: not-allowed;
+}
+
+.field__error {
+  font-size: 12px;
+  color: var(--danger);
+  min-height: 16px;
+  margin-top: 4px;
+}
+
+/* =========================================================
+   SELECTOR DE MARCA (tarjetas de marca)
+   ========================================================= */
+.brandgrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+@media (max-width: 640px) {
+  .brandgrid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.brandcard {
+  position: relative;
+}
+
+.brandcard input {
+  position: absolute;
+  opacity: 0;
+  inset: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.brandcard label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 64px;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-size: 13px;
+  font-weight: 600;
+  background: #fff;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.brandcard input:checked + label {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+
+.brandcard input:focus-visible + label {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   BOTÓN Y ALERTAS
+   ========================================================= */
+.btn-submit {
+  width: 100%;
+  padding: 15px;
+  background: var(--ink);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.05s ease;
+}
+
+.btn-submit:hover { background: #000; }
+.btn-submit:active { transform: scale(0.995); }
+
+.btn-submit:disabled {
+  background: #B9B2A0;
+  cursor: not-allowed;
+}
+
+.alert {
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  font-size: 14px;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.alert--success {
+  background: var(--success-bg);
+  color: var(--success);
+  border: 1px solid #BFDECA;
+}
+
+.alert--error {
+  background: var(--danger-bg);
+  color: var(--danger);
+  border: 1px solid #F0C2BC;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}

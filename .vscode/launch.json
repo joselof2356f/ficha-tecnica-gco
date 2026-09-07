@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "FidelidadApplication",
+            "request": "launch",
+            "mainClass": "com.retail.fidelidad.FidelidadApplication",
+            "projectName": "fidelidad"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
